@@ -16,15 +16,14 @@ class JumbotronUst extends React.Component {
   render() {
     return (
       <div>
-        <Jumbotron className="mb-n3 mt-3">
+        <Jumbotron className="mt-3">
           <h1 className="display-3">Portfolyo</h1>
           <p className="lead">Berk Elmas'ın güncel web teknolojilerini takip etmek ve kullanmak amacı ile geliştirien Web Sitesidir.</p>
           <hr className="my-2" />
           <p>Berk Elmas tarafından yeni teknolojilerin kullanılması ve kişisel gelişim için tasarlanan bu web sitesinde; hangi güncel teknolojilerin kullanıldığını görebilirsiniz.</p>
           <p className="lead">
-            <Button onClick={this.toggle} color="info">Berk Elmas Kimdir?</Button>
+            <Button className="mt-3" onClick={this.toggle} color="info">Berk Elmas Kimdir?</Button>
           </p>
-          <Link href="/about?name=berk" as="/about/berk"><a className="btn btn-info">berk</a></Link>
           <Collapse isOpen={this.state.collapse}>
             <Card className="card-background">
               <CardBody>

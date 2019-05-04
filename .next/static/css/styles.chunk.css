@@ -34,5 +34,9 @@ a:hover .deco-none {
   background-color: #e9ecef;
 }
 
+.card-title {
+  font-size : 1.2em
+}
+
 
 /*# sourceMappingURL=styles.chunk.css.map*/

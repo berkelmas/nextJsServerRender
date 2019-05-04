@@ -25,3 +25,7 @@ a:hover .deco-none {
 .card-background {
   background-color: #e9ecef;
 }
+
+.card-title {
+  font-size : 1.2em
+}
