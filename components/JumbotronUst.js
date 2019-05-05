@@ -27,7 +27,7 @@ class JumbotronUst extends React.Component {
           <Collapse isOpen={this.state.collapse}>
             <Card className="card-background">
               <CardBody>
-                <p className="lead"><h3>Merhaba,</h3> <br/> Bu web sitesinde modern JavaScript kutuphanelerinden mumkun oldugu kadar faydalanarak hem kendi front end bilgimi gelistirmeye calistim ve yalin bir calisma oldugunu dusunuyorum. Kullanilan teknolojiler icin detayli bilgiye <strong>buraya</strong> tiklayarak ulasabilirsiniz.</p>
+                <p className="lead">Portfolyo<br/> Bu web sitesinde modern JavaScript kutuphanelerinden mumkun oldugu kadar faydalanarak hem kendi front end bilgimi gelistirmeye calistim ve yalin bir calisma oldugunu dusunuyorum. Kullanilan teknolojiler icin detayli bilgiye <strong>buraya</strong> tiklayarak ulasabilirsiniz.</p>
               </CardBody>
             </Card>
           </Collapse>

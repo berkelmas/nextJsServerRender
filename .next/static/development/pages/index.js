@@ -317,7 +317,7 @@ function (_React$Component) {
         className: "card-background"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardBody"], null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", {
         className: "lead"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h3", null, "Merhaba,"), " ", react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("br", null), " Bu web sitesinde modern JavaScript kutuphanelerinden mumkun oldugu kadar faydalanarak hem kendi front end bilgimi gelistirmeye calistim ve yalin bir calisma oldugunu dusunuyorum. Kullanilan teknolojiler icin detayli bilgiye ", react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("strong", null, "buraya"), " tiklayarak ulasabilirsiniz."))))));
+      }, "Portfolyo", react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("br", null), " Bu web sitesinde modern JavaScript kutuphanelerinden mumkun oldugu kadar faydalanarak hem kendi front end bilgimi gelistirmeye calistim ve yalin bir calisma oldugunu dusunuyorum. Kullanilan teknolojiler icin detayli bilgiye ", react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("strong", null, "buraya"), " tiklayarak ulasabilirsiniz."))))));
     }
   }]);
 
@@ -57031,7 +57031,7 @@ function (_React$Component) {
 
 /***/ }),
 
-/***/ 0:
+/***/ 1:
 /*!***************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2Fberkelmas%2FDesktop%2FnextJsServerRender%2Fpages%2Findex.js ***!
   \***************************************************************************************************************************************/
@@ -57054,5 +57054,5 @@ module.exports = dll_6184ce4b2e7d7d52f429;
 
 /***/ })
 
-},[[0,"static/runtime/webpack.js"]]]);
+},[[1,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=index.js.map

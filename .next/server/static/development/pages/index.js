@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -413,7 +413,7 @@ function (_React$Component) {
         className: "card-background"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardBody"], null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", {
         className: "lead"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h3", null, "Merhaba,"), " ", react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("br", null), " Bu web sitesinde modern JavaScript kutuphanelerinden mumkun oldugu kadar faydalanarak hem kendi front end bilgimi gelistirmeye calistim ve yalin bir calisma oldugunu dusunuyorum. Kullanilan teknolojiler icin detayli bilgiye ", react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("strong", null, "buraya"), " tiklayarak ulasabilirsiniz."))))));
+      }, "Portfolyo", react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("br", null), " Bu web sitesinde modern JavaScript kutuphanelerinden mumkun oldugu kadar faydalanarak hem kendi front end bilgimi gelistirmeye calistim ve yalin bir calisma oldugunu dusunuyorum. Kullanilan teknolojiler icin detayli bilgiye ", react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("strong", null, "buraya"), " tiklayarak ulasabilirsiniz."))))));
     }
   }]);
 
@@ -1481,7 +1481,7 @@ function (_React$Component) {
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/
