@@ -1,8 +1,10 @@
 import React from "react";
-import firebase from 'firebase';
 
-import "../css/reactstrap.min.css";
-import "../css/style.css";
+import firebase from 'firebase/app';
+import 'firebase/database'; // If using Firebase database
+import 'firebase/auth';
+
+import Head from 'next/head';
 
 import NavbarUst from '../components/NavbarUst';
 import JumbotronUst from '../components/JumbotronUst';
@@ -31,6 +33,11 @@ class Home extends React.Component {
   render() {
     return (
       <div>
+        <Head>
+          <title>Berk Elmas</title>
+          <link rel="stylesheet" href="static/css/reactstrap.min.css" />
+          <link rel="stylesheet" href="static/css/style.css" />
+        </Head>
         <NavbarUst/>
         <JumbotronUst/>
         <CardUst firebase={firebase}/>

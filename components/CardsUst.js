@@ -1,36 +1,53 @@
 import React, {Fragment} from 'react';
 import {Row, Col, Card, CardTitle, CardText, Button,
-        InputGroup, Input, InputGroupAddon, Form, FormGroup} from 'reactstrap';
+        InputGroup, Input, InputGroupAddon, Form, FormGroup,
+        Spinner
+      } from 'reactstrap';
+
+import { FaGooglePlusG } from 'react-icons/fa';
 
 class CardsUst extends React.Component {
   constructor(props){
     super(props);
     this.state = {
       messages: [],
-      input: ''
+      input: '',
+      loginState : false,
+      loading: true,
+      name: ''
     }
   }
 
   componentDidMount() {
     const {firebase} = this.props;
-    const messages = firebase.database().ref('messages/');
+    const messages = firebase.database().ref('messages/').limitToLast(10);
 
-    messages.on('value', snapshot => {
-      let liste = [];
-
-      Object.keys(snapshot.val()).map(val => {
-        let data = {};
-        data['id'] = val;
-        data['username'] = snapshot.val()[val]['username'];
-        data['message'] = snapshot.val()[val]['message'];
-        liste.push(data);
-      })
-      this.setState({
-        messages: liste
+    messages.on('child_added', snapshot => {
+      const veri = snapshot.val();
+      this.setState(state => {
+        const messages = state.messages.concat(veri);
+        return {
+          messages,
+          input: '',
+          loading: false
+        }
       })
     })
 
-  }
+    const token = localStorage.getItem('googleToken');
+    if (token) {
+      const credential = firebase.auth.GoogleAuthProvider.credential(null, token);
+      firebase.auth().signInAndRetrieveDataWithCredential(credential)
+              .then(res => {
+                this.setState({
+                  loginState: true,
+                  name: res.user.displayName
+                })
+              })
+              .catch(err => console.log(err))
+    }
+
+  } /// end of componentDidMount()
 
   updateInput = (e) => {
     this.setState({
@@ -44,7 +61,7 @@ class CardsUst extends React.Component {
     const refer = await firebase.database().ref('messages');
 
     try {
-      const mesaj = await refer.push({message: this.state.input, username: "berkelmas"})
+      const mesaj = await refer.push({message: this.state.input, username: this.state.name})
       this.setState({
         input : ''
       })
@@ -56,25 +73,61 @@ class CardsUst extends React.Component {
     }
   }
 
+  googleLogin = () => {
+    const {firebase} = this.props;
+    const provider = new firebase.auth.GoogleAuthProvider();
+    provider.addScope('profile');
+    provider.addScope('email');
+    firebase.auth().signInWithPopup(provider)
+      .then(result => {
+        const token = result.credential.accessToken;
+        const {email} = result.user;
+
+
+        localStorage.setItem('googleToken', token);
+        this.setState({
+          loginState : true,
+          name : result.user.displayName
+        })
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
+
 
   render() {
+    const messageForm = (
+      <Form onSubmit={this.sendMessage}>
+          <InputGroup className="pb-3 pt-3">
+            <Input className="form-control" onChange={this.updateInput} value={this.state.input} placeholder={this.state.name + " olarak yaziyorsun"} />
+          </InputGroup>
+          <Button type="submit" className="w-100 bg-info" >Gönder</Button>
+      </Form>
+    )
+
+    const googleButton = (
+      <Button onClick={this.googleLogin} className="w-100 bg-danger"><FaGooglePlusG size={23}/> Google ile Üye Ol</Button>
+    )
+
+    const chatMessages = (
+      <div>
+        {this.state.messages.map((val, index) =>
+          <Card key={index} className="p-1 mb-2 mt-2 w-50">
+            <CardText><strong>@{val.username}</strong> {val.message}</CardText>
+          </Card>
+        )}
+        {this.state.loginState ? messageForm : googleButton}
+      </div>
+    )
+
     return (
       <Fragment>
         <Row className="mx-auto d-flex justify-content-center pb-5">
           <Col sm="8">
             <Card body>
               <CardTitle className="card-title text-center">Chat Odasi</CardTitle>
-              {this.state.messages.map(val =>
-                <Card key={val.id} className="p-1 mb-2 mt-2 w-50">
-                  <CardText><strong>@{val.username}</strong> {val.message}</CardText>
-                </Card>
-              )}
-              <Form onSubmit={this.sendMessage}>
-                  <InputGroup className="pb-3 pt-3">
-                    <Input className="form-control" onChange={this.updateInput} value={this.state.input} placeholder="Canli Chat'e Hosgeldiniz..." />
-                  </InputGroup>
-                  <Button type="submit" className="w-100 bg-info" >Gönder</Button>
-              </Form>
+            {this.state.loading ? <Spinner className="mx-auto" style={{ width: '3rem', height: '3rem' }} type="grow" /> : chatMessages}
             </Card>
           </Col>
         </Row>

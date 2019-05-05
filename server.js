@@ -11,9 +11,16 @@ app.prepare()
 
   server.get('/about/:name', (req, res) => {
       const actualPage = '/about'
-      const queryParams = { name: req.params.name } 
+      const queryParams = { name: req.params.name }
       app.render(req, res, actualPage, queryParams)
   })
+
+  // Deneme amacli about sayfasini da server side routing ile hakkimda ya yonlendirdim.
+  server.get('/hakkimda', (req, res) => {
+    const actualPage = '/about';
+    app.render(req, res, actualPage);
+  })
+
 
   server.get('*', (req, res) => {
     return handle(req, res)

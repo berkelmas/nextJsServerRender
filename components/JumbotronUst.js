@@ -22,12 +22,12 @@ class JumbotronUst extends React.Component {
           <hr className="my-2" />
           <p>Berk Elmas tarafından yeni teknolojilerin kullanılması ve kişisel gelişim için tasarlanan bu web sitesinde; hangi güncel teknolojilerin kullanıldığını görebilirsiniz.</p>
           <p className="lead">
-            <Button className="mt-3" onClick={this.toggle} color="info">Berk Elmas Kimdir?</Button>
+            <Button className="mt-3" onClick={this.toggle} color="info">Bu Site Neden Var?</Button>
           </p>
           <Collapse isOpen={this.state.collapse}>
             <Card className="card-background">
               <CardBody>
-                kdnaslk djasbdjkas jdnaskdnas  njkdnas kjasn ndjkasn jkasn jkdasn jkasndjknasjk ndasjk nasjk nn jkasnd jkasn jksandjk nasjk ndasjk nasjk nkjsanjk njka njkdan asjknsjkadnjksan kdjk asnkjasdn jkasn kjdnsa nkasjn jkdasn jkasndjk asnn asjk ndjaksn jkdasn jkasnd k
+                <p className="lead"><h3>Merhaba,</h3> <br/> Bu web sitesinde modern JavaScript kutuphanelerinden mumkun oldugu kadar faydalanarak hem kendi front end bilgimi gelistirmeye calistim ve yalin bir calisma oldugunu dusunuyorum. Kullanilan teknolojiler icin detayli bilgiye <strong>buraya</strong> tiklayarak ulasabilirsiniz.</p>
               </CardBody>
             </Card>
           </Collapse>
