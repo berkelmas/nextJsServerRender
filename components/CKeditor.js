@@ -1,6 +1,6 @@
 import { Component } from 'react';
 
-import {Row, Col, Button, Input} from 'reactstrap';
+import {Row, Col, Button, Input, Spinner} from 'reactstrap';
 
 import dynamic from 'next/dynamic';
 const CKEditor = dynamic(() => import('./CkeditorComp'), {
@@ -13,7 +13,8 @@ class CKeditor extends Component {
     this.state={
       article: 'Makale',
       isAdmin: false,
-      articleTitle: ''
+      articleTitle: '',
+      authLoading: true
     }
   }
 
@@ -27,11 +28,12 @@ class CKeditor extends Component {
               .then(res => {
                 if (res.user.displayName === 'Berk Elmas') {
                   this.setState({
-                    isAdmin: true
+                    isAdmin: true,
+                    authLoading: false
                   })
                 }
               })
-              .catch(err => console.log(err))
+              .catch(err => this.setState({authLoading: false}))
     }
   }
 
@@ -79,7 +81,14 @@ class CKeditor extends Component {
           } }
 
           />
-        {this.state.isAdmin ? <button onClick={this.saveArticle} className="btn btn-info mt-3 mb-5 w-100">Makale Ekle</button> : <p className="text-center">Sadece Berk Elmas Makale Yükleyebilir</p>}
+        {this.state.authLoading
+          ?
+          <div className="d-flex justify-content-center p-5"><Spinner className="mx-auto" style={{ width: '3rem', height: '3rem' }} type="grow" /></div>
+          :
+          this.state.isAdmin ? <button onClick={this.saveArticle} className="btn btn-info mt-3 mb-5 w-100">Makale Ekle</button>
+          :
+          <p className="text-center">Sadece Berk Elmas Makale Yükleyebilir</p>
+        }
       </Col>
     </Row>
     </div>

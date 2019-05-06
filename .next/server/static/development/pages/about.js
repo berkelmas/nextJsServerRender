@@ -121,7 +121,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -308,7 +308,8 @@ function (_Component) {
     _this.state = {
       article: 'Makale',
       isAdmin: false,
-      articleTitle: ''
+      articleTitle: '',
+      authLoading: true
     };
     return _this;
   }
@@ -326,11 +327,14 @@ function (_Component) {
         firebase.auth().signInAndRetrieveDataWithCredential(credential).then(function (res) {
           if (res.user.displayName === 'Berk Elmas') {
             _this2.setState({
-              isAdmin: true
+              isAdmin: true,
+              authLoading: false
             });
           }
         }).catch(function (err) {
-          return console.log(err);
+          return _this2.setState({
+            authLoading: false
+          });
         });
       }
     }
@@ -368,7 +372,16 @@ function (_Component) {
         onChange: function onChange(event, editor) {
           _this3.updateMakale(event, editor);
         }
-      }), this.state.isAdmin ? react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("button", {
+      }), this.state.authLoading ? react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+        className: "d-flex justify-content-center p-5"
+      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Spinner"], {
+        className: "mx-auto",
+        style: {
+          width: '3rem',
+          height: '3rem'
+        },
+        type: "grow"
+      })) : this.state.isAdmin ? react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("button", {
         onClick: this.saveArticle,
         className: "btn btn-info mt-3 mb-5 w-100"
       }, "Makale Ekle") : react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("p", {
@@ -1369,7 +1382,7 @@ function (_React$Component) {
 
 /***/ }),
 
-/***/ 4:
+/***/ 5:
 /*!******************************!*\
   !*** multi ./pages/about.js ***!
   \******************************/

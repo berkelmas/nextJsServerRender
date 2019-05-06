@@ -180,7 +180,8 @@ function (_Component) {
     _this.state = {
       article: 'Makale',
       isAdmin: false,
-      articleTitle: ''
+      articleTitle: '',
+      authLoading: true
     };
     return _this;
   }
@@ -198,11 +199,14 @@ function (_Component) {
         firebase.auth().signInAndRetrieveDataWithCredential(credential).then(function (res) {
           if (res.user.displayName === 'Berk Elmas') {
             _this2.setState({
-              isAdmin: true
+              isAdmin: true,
+              authLoading: false
             });
           }
         }).catch(function (err) {
-          return console.log(err);
+          return _this2.setState({
+            authLoading: false
+          });
         });
       }
     }
@@ -240,7 +244,16 @@ function (_Component) {
         onChange: function onChange(event, editor) {
           _this3.updateMakale(event, editor);
         }
-      }), this.state.isAdmin ? react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("button", {
+      }), this.state.authLoading ? react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+        className: "d-flex justify-content-center p-5"
+      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Spinner"], {
+        className: "mx-auto",
+        style: {
+          width: '3rem',
+          height: '3rem'
+        },
+        type: "grow"
+      })) : this.state.isAdmin ? react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("button", {
         onClick: this.saveArticle,
         className: "btn btn-info mt-3 mb-5 w-100"
       }, "Makale Ekle") : react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("p", {
@@ -49734,7 +49747,7 @@ function (_React$Component) {
 
 /***/ }),
 
-/***/ 1:
+/***/ 2:
 /*!***************************************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Fabout&absolutePagePath=C%3A%5CUsers%5CITopya%5CDesktop%5CNext%20Js%20%C3%96%C4%9Fren%5CnextJsServerRender%5Cpages%5Cabout.js ***!
   \***************************************************************************************************************************************************************************/
@@ -49757,5 +49770,5 @@ module.exports = dll_6184ce4b2e7d7d52f429;
 
 /***/ })
 
-},[[1,"static/runtime/webpack.js"]]]);
+},[[2,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=about.js.map
