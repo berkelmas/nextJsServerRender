@@ -121,7 +121,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -293,7 +293,8 @@ function (_Component) {
         title: _this.state.articleTitle,
         message: _this.state.article,
         author: 'Berk Elmas',
-        publishdate: String(date)
+        publishdate: String(date),
+        createdAt: firebase.database.ServerValue.TIMESTAMP
       });
 
       _this.setState({
@@ -1368,7 +1369,7 @@ function (_React$Component) {
 
 /***/ }),
 
-/***/ 5:
+/***/ 4:
 /*!******************************!*\
   !*** multi ./pages/about.js ***!
   \******************************/

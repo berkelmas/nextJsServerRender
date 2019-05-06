@@ -46,7 +46,13 @@ class CKeditor extends Component {
     const {firebase} = this.props;
     const articles = firebase.database().ref('articles');
     const date = new Date(); // auto add date.now()
-    articles.push({title: this.state.articleTitle,message: this.state.article, author: 'Berk Elmas', publishdate: String(date) });
+    articles.push({
+                  title: this.state.articleTitle,
+                  message: this.state.article,
+                  author: 'Berk Elmas',
+                  publishdate: String(date),
+                  createdAt: firebase.database.ServerValue.TIMESTAMP
+                });
     this.setState({
       article: 'Makale Gonderildi',
       articleTitle: ''

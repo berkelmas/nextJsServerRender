@@ -14,7 +14,8 @@ class CardsUst extends React.Component {
       input: '',
       loginState : false,
       loading: true,
-      name: ''
+      name: '',
+      authLoading: true
     }
   }
 
@@ -41,10 +42,15 @@ class CardsUst extends React.Component {
               .then(res => {
                 this.setState({
                   loginState: true,
-                  name: res.user.displayName
+                  name: res.user.displayName,
+                  authLoading: false
                 })
               })
-              .catch(err => console.log(err))
+              .catch(err => this.setState({authLoading:false}))
+    } else {
+      this.setState({
+        authLoading: false
+      })
     }
 
   } /// end of componentDidMount()
@@ -117,7 +123,11 @@ class CardsUst extends React.Component {
             <CardText><strong>@{val.username}</strong> {val.message}</CardText>
           </Card>
         )}
-        {this.state.loginState ? messageForm : googleButton}
+        {this.state.authLoading ?
+          <Spinner className="mx-auto" style={{ width: '3rem', height: '3rem' }} type="grow" />
+          : this.state.loginState ?
+              messageForm : googleButton }
+
       </div>
     )
 

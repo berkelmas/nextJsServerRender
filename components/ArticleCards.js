@@ -22,13 +22,18 @@ class ArticleCards extends React.Component {
       const article = snapshot.val();
 
       this.setState(state => {
-        const articles = state.articles.concat(article);
+        const articles = [article ,...state.articles];
         return({
           articles,
           loading: false
         })
       })
     })
+  }
+  componentWillUnmount() {
+    const {firebase} = this.props;
+    const articles = firebase.database().ref('articles');
+    articles.orderByChild('publishdate').off('child_added');
   }
 
   render() {

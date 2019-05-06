@@ -165,7 +165,8 @@ function (_Component) {
         title: _this.state.articleTitle,
         message: _this.state.article,
         author: 'Berk Elmas',
-        publishdate: String(date)
+        publishdate: String(date),
+        createdAt: firebase.database.ServerValue.TIMESTAMP
       });
 
       _this.setState({
@@ -49733,7 +49734,7 @@ function (_React$Component) {
 
 /***/ }),
 
-/***/ 4:
+/***/ 1:
 /*!***************************************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Fabout&absolutePagePath=C%3A%5CUsers%5CITopya%5CDesktop%5CNext%20Js%20%C3%96%C4%9Fren%5CnextJsServerRender%5Cpages%5Cabout.js ***!
   \***************************************************************************************************************************************************************************/
@@ -49756,5 +49757,5 @@ module.exports = dll_6184ce4b2e7d7d52f429;
 
 /***/ })
 
-},[[4,"static/runtime/webpack.js"]]]);
+},[[1,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=about.js.map

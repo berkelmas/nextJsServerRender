@@ -239,7 +239,8 @@ function (_React$Component) {
       input: '',
       loginState: false,
       loading: true,
-      name: ''
+      name: '',
+      authLoading: true
     };
     return _this;
   }
@@ -270,10 +271,17 @@ function (_React$Component) {
         firebase.auth().signInAndRetrieveDataWithCredential(credential).then(function (res) {
           _this2.setState({
             loginState: true,
-            name: res.user.displayName
+            name: res.user.displayName,
+            authLoading: false
           });
         }).catch(function (err) {
-          return console.log(err);
+          return _this2.setState({
+            authLoading: false
+          });
+        });
+      } else {
+        this.setState({
+          authLoading: false
         });
       }
     } /// end of componentDidMount()
@@ -305,7 +313,14 @@ function (_React$Component) {
           key: index,
           className: "p-1 mb-2 mt-2 w-50"
         }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["CardText"], null, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("strong", null, "@", val.username), " ", val.message));
-      }), this.state.loginState ? messageForm : googleButton);
+      }), this.state.authLoading ? react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Spinner"], {
+        className: "mx-auto",
+        style: {
+          width: '3rem',
+          height: '3rem'
+        },
+        type: "grow"
+      }) : this.state.loginState ? messageForm : googleButton);
       return react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_9__["Fragment"], null, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Row"], {
         className: "mx-auto d-flex justify-content-center pb-5"
       }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Col"], {
