@@ -45,7 +45,7 @@ class NavbarUst extends React.Component {
                 <NavLink href="/tech-stack">Teknolojiler</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/tech-stack">Yazılar</NavLink>
+                <NavLink href="/articles">Yazılar</NavLink>
               </NavItem>
             </Nav>
           </Collapse>

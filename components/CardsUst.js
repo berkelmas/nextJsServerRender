@@ -125,7 +125,7 @@ class CardsUst extends React.Component {
       <Fragment>
         <Row className="mx-auto d-flex justify-content-center pb-5">
           <Col sm="8">
-            <Card body>
+            <Card className="shadow-lg" body>
               <CardTitle className="card-title text-center">Chat Odasi</CardTitle>
             {this.state.loading ? <Spinner className="mx-auto" style={{ width: '3rem', height: '3rem' }} type="grow" /> : chatMessages}
             </Card>

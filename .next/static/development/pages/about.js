@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static/development/pages/about.js"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static\\development\\pages\\about.js"],{
 
 /***/ "./components/AboutCards.js":
 /*!**********************************!*\
@@ -159,29 +159,58 @@ function (_Component) {
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "saveArticle", function (e) {
       var firebase = _this.props.firebase;
       var articles = firebase.database().ref('articles');
+      var date = new Date(); // auto add date.now()
+
       articles.push({
+        title: _this.state.articleTitle,
         message: _this.state.article,
-        author: 'Berk Elmas'
+        author: 'Berk Elmas',
+        publishdate: String(date)
       });
 
       _this.setState({
-        article: 'Makale Gonderildi'
+        article: 'Makale Gonderildi',
+        articleTitle: ''
       });
 
       e.preventDefault;
     });
 
     _this.state = {
-      article: 'Makale'
+      article: 'Makale',
+      isAdmin: false,
+      articleTitle: ''
     };
     return _this;
   }
 
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(CKeditor, [{
-    key: "render",
-    value: function render() {
+    key: "componentDidMount",
+    value: function componentDidMount() {
       var _this2 = this;
 
+      var firebase = this.props.firebase;
+      var token = localStorage.getItem('googleToken');
+
+      if (token) {
+        var credential = firebase.auth.GoogleAuthProvider.credential(null, token);
+        firebase.auth().signInAndRetrieveDataWithCredential(credential).then(function (res) {
+          if (res.user.displayName === 'Berk Elmas') {
+            _this2.setState({
+              isAdmin: true
+            });
+          }
+        }).catch(function (err) {
+          return console.log(err);
+        });
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+
+      console.log(this.state.articleTitle);
       return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Row"], {
         className: "mt-5"
       }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
@@ -192,26 +221,30 @@ function (_Component) {
         }
       }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("h2", {
         className: "text-center"
-      }, "Makale Ekle"), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(CKEditor, {
+      }, "Makale Ekle"), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
+        onChange: function onChange(e) {
+          return _this3.setState({
+            articleTitle: e.target.value
+          });
+        },
+        value: this.state.articleTitle,
+        className: "p-3 mt-3 mb-3",
+        placeholder: "Makale Ba\u015Fl\u0131\u011F\u0131"
+      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(CKEditor, {
         data: this.state.article,
         onInit: function onInit(editor) {
           // You can store the "editor" and use when it is needed.
           console.log('Editor is ready to use!', editor);
         },
         onChange: function onChange(event, editor) {
-          _this2.updateMakale(event, editor);
+          _this3.updateMakale(event, editor);
         }
-      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("button", {
+      }), this.state.isAdmin ? react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("button", {
         onClick: this.saveArticle,
         className: "btn btn-info mt-3 mb-5 w-100"
-      }, "Makale Ekle"))));
-    }
-  }], [{
-    key: "getInitialProps",
-    value: function getInitialProps(_ref) {
-      var req = _ref.req,
-          query = _ref.query;
-      return {};
+      }, "Makale Ekle") : react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("p", {
+        className: "text-center"
+      }, "Sadece Berk Elmas Makale Y\xFCkleyebilir"))));
     }
   }]);
 
@@ -302,7 +335,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["NavLink"], null, "Hakk\u0131mda"))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["NavItem"], null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["NavLink"], {
         href: "/tech-stack"
       }, "Teknolojiler")), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["NavItem"], null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["NavLink"], {
-        href: "/tech-stack"
+        href: "/articles"
       }, "Yaz\u0131lar"))))));
     }
   }]);
@@ -30159,10 +30192,10 @@ exports.formatWithValidation = formatWithValidation;
 
 /***/ }),
 
-/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fabout&absolutePagePath=%2FUsers%2Fberkelmas%2FDesktop%2FnextJsServerRender%2Fpages%2Fabout.js!./":
-/*!****************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fabout&absolutePagePath=%2FUsers%2Fberkelmas%2FDesktop%2FnextJsServerRender%2Fpages%2Fabout.js ***!
-  \****************************************************************************************************************************************************************************************/
+/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fabout&absolutePagePath=C%3A%5CUsers%5CITopya%5CDesktop%5CNext%20Js%20%C3%96%C4%9Fren%5CnextJsServerRender%5Cpages%5Cabout.js!./":
+/*!***********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fabout&absolutePagePath=C%3A%5CUsers%5CITopya%5CDesktop%5CNext%20Js%20%C3%96%C4%9Fren%5CnextJsServerRender%5Cpages%5Cabout.js ***!
+  \***********************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -49700,14 +49733,14 @@ function (_React$Component) {
 
 /***/ }),
 
-/***/ 0:
-/*!********************************************************************************************************************************************!*\
-  !*** multi next-client-pages-loader?page=%2Fabout&absolutePagePath=%2FUsers%2Fberkelmas%2FDesktop%2FnextJsServerRender%2Fpages%2Fabout.js ***!
-  \********************************************************************************************************************************************/
+/***/ 4:
+/*!***************************************************************************************************************************************************************************!*\
+  !*** multi next-client-pages-loader?page=%2Fabout&absolutePagePath=C%3A%5CUsers%5CITopya%5CDesktop%5CNext%20Js%20%C3%96%C4%9Fren%5CnextJsServerRender%5Cpages%5Cabout.js ***!
+  \***************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Fabout&absolutePagePath=%2FUsers%2Fberkelmas%2FDesktop%2FnextJsServerRender%2Fpages%2Fabout.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fabout&absolutePagePath=%2FUsers%2Fberkelmas%2FDesktop%2FnextJsServerRender%2Fpages%2Fabout.js!./");
+module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Fabout&absolutePagePath=C%3A%5CUsers%5CITopya%5CDesktop%5CNext%20Js%20%C3%96%C4%9Fren%5CnextJsServerRender%5Cpages%5Cabout.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fabout&absolutePagePath=C%3A%5CUsers%5CITopya%5CDesktop%5CNext%20Js%20%C3%96%C4%9Fren%5CnextJsServerRender%5Cpages%5Cabout.js!./");
 
 
 /***/ }),
@@ -49723,5 +49756,5 @@ module.exports = dll_6184ce4b2e7d7d52f429;
 
 /***/ })
 
-},[[0,"static/runtime/webpack.js"]]]);
+},[[4,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=about.js.map

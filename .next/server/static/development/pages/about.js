@@ -6,7 +6,7 @@ module.exports =
 /******/ 	// object to store loaded chunks
 /******/ 	// "0" means "already loaded"
 /******/ 	var installedChunks = {
-/******/ 		"static/development/pages/about.js": 0
+/******/ 		"static\\development\\pages\\about.js": 0
 /******/ 	};
 /******/
 /******/ 	// The require function
@@ -121,7 +121,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -287,29 +287,58 @@ function (_Component) {
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "saveArticle", function (e) {
       var firebase = _this.props.firebase;
       var articles = firebase.database().ref('articles');
+      var date = new Date(); // auto add date.now()
+
       articles.push({
+        title: _this.state.articleTitle,
         message: _this.state.article,
-        author: 'Berk Elmas'
+        author: 'Berk Elmas',
+        publishdate: String(date)
       });
 
       _this.setState({
-        article: 'Makale Gonderildi'
+        article: 'Makale Gonderildi',
+        articleTitle: ''
       });
 
       e.preventDefault;
     });
 
     _this.state = {
-      article: 'Makale'
+      article: 'Makale',
+      isAdmin: false,
+      articleTitle: ''
     };
     return _this;
   }
 
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(CKeditor, [{
-    key: "render",
-    value: function render() {
+    key: "componentDidMount",
+    value: function componentDidMount() {
       var _this2 = this;
 
+      var firebase = this.props.firebase;
+      var token = localStorage.getItem('googleToken');
+
+      if (token) {
+        var credential = firebase.auth.GoogleAuthProvider.credential(null, token);
+        firebase.auth().signInAndRetrieveDataWithCredential(credential).then(function (res) {
+          if (res.user.displayName === 'Berk Elmas') {
+            _this2.setState({
+              isAdmin: true
+            });
+          }
+        }).catch(function (err) {
+          return console.log(err);
+        });
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+
+      console.log(this.state.articleTitle);
       return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Row"], {
         className: "mt-5"
       }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
@@ -320,26 +349,30 @@ function (_Component) {
         }
       }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("h2", {
         className: "text-center"
-      }, "Makale Ekle"), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(CKEditor, {
+      }, "Makale Ekle"), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
+        onChange: function onChange(e) {
+          return _this3.setState({
+            articleTitle: e.target.value
+          });
+        },
+        value: this.state.articleTitle,
+        className: "p-3 mt-3 mb-3",
+        placeholder: "Makale Ba\u015Fl\u0131\u011F\u0131"
+      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(CKEditor, {
         data: this.state.article,
         onInit: function onInit(editor) {
           // You can store the "editor" and use when it is needed.
           console.log('Editor is ready to use!', editor);
         },
         onChange: function onChange(event, editor) {
-          _this2.updateMakale(event, editor);
+          _this3.updateMakale(event, editor);
         }
-      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("button", {
+      }), this.state.isAdmin ? react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("button", {
         onClick: this.saveArticle,
         className: "btn btn-info mt-3 mb-5 w-100"
-      }, "Makale Ekle"))));
-    }
-  }], [{
-    key: "getInitialProps",
-    value: function getInitialProps(_ref) {
-      var req = _ref.req,
-          query = _ref.query;
-      return {};
+      }, "Makale Ekle") : react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("p", {
+        className: "text-center"
+      }, "Sadece Berk Elmas Makale Y\xFCkleyebilir"))));
     }
   }]);
 
@@ -431,7 +464,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["NavLink"], null, "Hakk\u0131mda"))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["NavItem"], null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["NavLink"], {
         href: "/tech-stack"
       }, "Teknolojiler")), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["NavItem"], null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["NavLink"], {
-        href: "/tech-stack"
+        href: "/articles"
       }, "Yaz\u0131lar"))))));
     }
   }]);
@@ -1335,14 +1368,14 @@ function (_React$Component) {
 
 /***/ }),
 
-/***/ 3:
+/***/ 5:
 /*!******************************!*\
   !*** multi ./pages/about.js ***!
   \******************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/berkelmas/Desktop/nextJsServerRender/pages/about.js */"./pages/about.js");
+module.exports = __webpack_require__(/*! C:\Users\ITopya\Desktop\Next Js Öğren\nextJsServerRender\pages\about.js */"./pages/about.js");
 
 
 /***/ }),
