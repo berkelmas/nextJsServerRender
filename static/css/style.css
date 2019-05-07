@@ -47,3 +47,12 @@ a:hover .deco-none {
 .article-title:hover {
   color : #7E7E7E
 }
+
+.warning-p{
+  background-color: #76B2C4;
+  border-radius: 1.2em;
+  color: white;
+  margin-top: 10px;
+  font-size: 1.2em;
+  padding: 5px;
+}

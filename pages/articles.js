@@ -7,12 +7,15 @@ import NavbarUst from '../components/NavbarUst';
 import ArticleCards from '../components/ArticleCards';
 
 class Articles extends React.Component {
-  static async getInitialProps(){
-    const res = await fetch('http://localhost:3001/articles')
+
+  static async getInitialProps({query}){
+    const res = await fetch('http://localhost:3001/articles?perPage=2&page=' + query.page )
     let data = await res.json();
-    data = data['docs'];
-    return {data: data.reverse()}
+    const articles = data['docs'];
+    const pageCount = data['pages'];
+    return {data: articles.reverse(), pageCount}
   }
+
 
   render() {
     return (
@@ -23,7 +26,7 @@ class Articles extends React.Component {
         <link rel='stylesheet' href='static/css/style.css' />
       </Head>
       <NavbarUst/>
-      <ArticleCards data={this.props.data} />
+      <ArticleCards data={this.props.data} pageCount={this.props.pageCount} />
       <br/>
       <hr/>
     </React.Fragment>

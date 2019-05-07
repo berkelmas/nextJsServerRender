@@ -1,6 +1,6 @@
 import { Component } from 'react';
 
-import {Row, Col, Button, Input, Spinner} from 'reactstrap';
+import {Row, Col, Button, Input, Spinner, Modal, ModalBody, ModalFooter, ModalHeader} from 'reactstrap';
 import fetch from 'isomorphic-unfetch';
 
 import dynamic from 'next/dynamic';
@@ -15,7 +15,9 @@ class CKeditor extends Component {
       article: 'Makale',
       isAdmin: false,
       articleTitle: '',
-      authLoading: true
+      authLoading: true,
+      modal : false,
+      sentSuccess: false
     }
   }
 
@@ -60,21 +62,30 @@ class CKeditor extends Component {
     })
     .then(res => {
       this.setState({
-        article: 'Makale Gonderildi',
-        articleTitle: ''
+        article: 'Makale',
+        articleTitle: '',
+        modal: true,
+        sentSuccess: true
       })
     })
     .catch(err => {
       this.setState({
-        article: 'Makale Gonderilemedi',
-        articleTitle: ''
+        article: 'Makale',
+        articleTitle: '',
+        modal: true,
+        sentSuccess: false
       })
     })
     e.preventDefault;
   }
 
+  toggle = () => {
+    this.setState(prevState => ({
+      modal: !prevState.modal
+    }));
+  }
+
   render() {
-    console.log(this.state.articleTitle);
     return (
     <div>
     <Row className="mt-5">
@@ -98,10 +109,22 @@ class CKeditor extends Component {
           :
           this.state.isAdmin ? <button onClick={this.saveArticle} className="btn btn-info mt-3 mb-5 w-100">Makale Ekle</button>
           :
-          <p className="text-center">Sadece Berk Elmas Makale Yükleyebilir</p>
+          <p className="text-center warning-p">Sadece Berk Elmas Makale Yükleyebilir</p>
         }
       </Col>
     </Row>
+
+
+    <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+      <ModalHeader toggle={this.toggle}>{this.state.sentSuccess ? 'Makale Başarı ile Gönderildi' : 'Makale Gönderimi Başarısız' }</ModalHeader>
+      <ModalBody>
+        {this.state.sentSuccess ? 'Makaleniz başarı ile backend servera kaydedildi.' : 'Makalenizin veritabanına kaydı başarısız oldu.'}
+      </ModalBody>
+      <ModalFooter>
+        <Button color="primary" onClick={this.toggle}>Tamam</Button>{' '}
+      </ModalFooter>
+    </Modal>
+
     </div>
     )
   }

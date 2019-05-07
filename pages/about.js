@@ -35,6 +35,7 @@ class About extends React.Component {
           <title>Hakkımda</title>
           <link rel="stylesheet" href="static/css/reactstrap.min.css" />
           <link rel="stylesheet" href="static/css/style.css" />
+          <link rel="stylesheet" href="static/css/animate.css" />
         </Head>
         <NavbarUst className="d-block"/>
         <div className="mt-5"></div>
