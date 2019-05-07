@@ -1,6 +1,7 @@
 import { Component } from 'react';
 
 import {Row, Col, Button, Input, Spinner} from 'reactstrap';
+import fetch from 'isomorphic-unfetch';
 
 import dynamic from 'next/dynamic';
 const CKEditor = dynamic(() => import('./CkeditorComp'), {
@@ -45,19 +46,29 @@ class CKeditor extends Component {
   }
 
   saveArticle = e => {
-    const {firebase} = this.props;
-    const articles = firebase.database().ref('articles');
-    const date = new Date(); // auto add date.now()
-    articles.push({
-                  title: this.state.articleTitle,
-                  message: this.state.article,
-                  author: 'Berk Elmas',
-                  publishdate: String(date),
-                  createdAt: firebase.database.ServerValue.TIMESTAMP
-                });
-    this.setState({
-      article: 'Makale Gonderildi',
-      articleTitle: ''
+    fetch('http://localhost:3001/addarticle', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        title: this.state.articleTitle,
+        message: this.state.article,
+        author: 'Berk Elmas'
+      })
+    })
+    .then(res => {
+      this.setState({
+        article: 'Makale Gonderildi',
+        articleTitle: ''
+      })
+    })
+    .catch(err => {
+      this.setState({
+        article: 'Makale Gonderilemedi',
+        articleTitle: ''
+      })
     })
     e.preventDefault;
   }

@@ -5,36 +5,7 @@ import {Col, Row, Card, CardTitle, CardText,
 import MakaleCard from './micros/MakaleCard';
 
 class ArticleCards extends React.Component {
-  constructor(props){
-    super(props);
 
-    this.state = {
-      articles : [],
-      loading: true
-    }
-  }
-
-  componentDidMount() {
-    const {firebase} = this.props;
-    const articles = firebase.database().ref('articles');
-
-    articles.on('child_added', snapshot => {
-      const article = snapshot.val();
-
-      this.setState(state => {
-        const articles = [article ,...state.articles];
-        return({
-          articles,
-          loading: false
-        })
-      })
-    })
-  }
-  componentWillUnmount() {
-    const {firebase} = this.props;
-    const articles = firebase.database().ref('articles');
-    articles.orderByChild('publishdate').off('child_added');
-  }
 
   render() {
     return (
@@ -43,8 +14,7 @@ class ArticleCards extends React.Component {
           <Card className="mt-5">
             <CardFooter className="shadow display-4 text-center">Makaleler</CardFooter>
           </Card>
-            {this.state.loading && <div className="d-flex justify-content-center p-5"><Spinner className="mt-5 " style={{ width: '6rem', height: '6rem' }} type="grow" /></div>}
-            {this.state.articles.map((makale, index) => <MakaleCard key={index} articleTitle={makale.message} articleMessage={makale.message} articleDate={makale.publishdate} />)}
+            {this.props.data.map((makale, index) => <MakaleCard key={index} articleTitle={makale.message} articleMessage={makale.message} articleDate={makale.publisheddate} />)}
         </Col>
       </Row>
     )
