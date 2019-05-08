@@ -21,6 +21,12 @@ app.prepare()
     app.render(req, res, actualPage);
   })
 
+  server.get('/sayfa/:page', (req, res) => {
+      const actualPage = '/articles'
+      const queryParams = { perPage : req.params.perPage, page: req.params.page }
+      app.render(req, res, actualPage, queryParams)
+  })
+
 
   server.get('*', (req, res) => {
     return handle(req, res)

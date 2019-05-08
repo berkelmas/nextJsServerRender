@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import {Col, Row, Card, CardTitle, CardText,
         CardFooter, Spinner, Pagination, PaginationItem, PaginationLink} from 'reactstrap';
 
@@ -14,13 +15,15 @@ class ArticleCards extends React.Component {
           <Card className="mt-5">
             <CardFooter className="shadow display-4 text-center">Makaleler</CardFooter>
           </Card>
-            {this.props.data.map((makale, index) => <MakaleCard key={index} articleTitle={makale.message} articleMessage={makale.message} articleDate={makale.publisheddate} />)}
+            {this.props.data.map((makale, index) => <MakaleCard key={index} articleTitle={makale.title} articleMessage={makale.message} articleDate={makale.publisheddate} />)}
             <Pagination className="d-flex justify-content-center mt-4">
               {[...Array(this.props.pageCount)].map((e, i) =>
                 <PaginationItem key={i}>
-                  <PaginationLink href={'?page=' + (i+1)}>
-                    {i+1}
-                  </PaginationLink>
+                  <Link href={'?perPage=3&page=' + (i+1)} as={'/sayfa/' + (i+1)}>
+                    <PaginationLink>
+                      {i+1}
+                    </PaginationLink>
+                  </Link>
                 </PaginationItem>
               )}
             </Pagination>

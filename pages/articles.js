@@ -9,7 +9,7 @@ import ArticleCards from '../components/ArticleCards';
 class Articles extends React.Component {
 
   static async getInitialProps({query}){
-    const res = await fetch('http://localhost:3001/articles?perPage=2&page=' + query.page )
+    const res = await fetch('http://localhost:3001/articles?perPage=3&page=' + query.page )
     let data = await res.json();
     const articles = data['docs'];
     const pageCount = data['pages'];
@@ -22,8 +22,8 @@ class Articles extends React.Component {
     <React.Fragment>
       <Head>
         <title>Berk Elmas | Makaleler</title>
-        <link rel='stylesheet' href='static/css/reactstrap.min.css' />
-        <link rel='stylesheet' href='static/css/style.css' />
+          <link rel="stylesheet" href="/static/css/reactstrap.min.css" />
+          <link rel="stylesheet" href="/static/css/style.css" />
       </Head>
       <NavbarUst/>
       <ArticleCards data={this.props.data} pageCount={this.props.pageCount} />

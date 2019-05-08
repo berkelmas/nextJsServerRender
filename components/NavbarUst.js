@@ -34,18 +34,18 @@ class NavbarUst extends React.Component {
     return (
       <div>
         <Navbar className="navbar-custom fixed-top" dark expand="md">
-          <NavbarBrand href="/">Berk Elmas</NavbarBrand>
+          <Link href="/"><NavbarBrand>Berk Elmas</NavbarBrand></Link>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/about" as="/hakkimda">Hakkımda</NavLink>
+                <Link  href="/about" as="/hakkimda"><NavLink>Hakkımda</NavLink></Link>
               </NavItem>
               <NavItem>
-                <NavLink href="/tech-stack">Teknolojiler</NavLink>
+                <Link href="/tech-stack"><NavLink>Teknolojiler</NavLink></Link>
               </NavItem>
               <NavItem>
-                <NavLink href="/articles">Yazılar</NavLink>
+                <Link href="/articles"><NavLink>Yazılar</NavLink></Link>
               </NavItem>
             </Nav>
           </Collapse>

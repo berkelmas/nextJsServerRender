@@ -17,8 +17,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
-/* harmony import */ var _micros_MakaleCard__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./micros/MakaleCard */ "./components/micros/MakaleCard.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
+/* harmony import */ var _micros_MakaleCard__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./micros/MakaleCard */ "./components/micros/MakaleCard.js");
+
 
 
 
@@ -43,9 +46,9 @@ function (_React$Component) {
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(ArticleCards, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Row"], {
+      return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Row"], {
         className: "mt-5"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Col"], {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
         xs: {
           size: 10,
           offset: 1
@@ -54,25 +57,26 @@ function (_React$Component) {
           size: 6,
           offset: 3
         }
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Card"], {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Card"], {
         className: "mt-5"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["CardFooter"], {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardFooter"], {
         className: "shadow display-4 text-center"
       }, "Makaleler")), this.props.data.map(function (makale, index) {
-        return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_micros_MakaleCard__WEBPACK_IMPORTED_MODULE_8__["default"], {
+        return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_micros_MakaleCard__WEBPACK_IMPORTED_MODULE_9__["default"], {
           key: index,
-          articleTitle: makale.message,
+          articleTitle: makale.title,
           articleMessage: makale.message,
           articleDate: makale.publisheddate
         });
-      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Pagination"], {
+      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Pagination"], {
         className: "d-flex justify-content-center mt-4"
       }, Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(Array(this.props.pageCount)).map(function (e, i) {
-        return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["PaginationItem"], {
+        return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["PaginationItem"], {
           key: i
-        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["PaginationLink"], {
-          href: '?page=' + (i + 1)
-        }, i + 1));
+        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_7___default.a, {
+          href: '?perPage=3&page=' + (i + 1),
+          as: '/sayfa/' + (i + 1)
+        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["PaginationLink"], null, i + 1)));
       }))));
     }
   }]);
@@ -146,9 +150,9 @@ function (_React$Component) {
         className: "navbar-custom fixed-top",
         dark: true,
         expand: "md"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["NavbarBrand"], {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_8___default.a, {
         href: "/"
-      }, "Berk Elmas"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["NavbarToggler"], {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["NavbarBrand"], null, "Berk Elmas")), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["NavbarToggler"], {
         onClick: this.toggle
       }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Collapse"], {
         isOpen: this.state.isOpen,
@@ -156,14 +160,14 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Nav"], {
         className: "ml-auto",
         navbar: true
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["NavItem"], null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["NavLink"], {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["NavItem"], null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_8___default.a, {
         href: "/about",
         as: "/hakkimda"
-      }, "Hakk\u0131mda")), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["NavItem"], null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["NavLink"], {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["NavLink"], null, "Hakk\u0131mda"))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["NavItem"], null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_8___default.a, {
         href: "/tech-stack"
-      }, "Teknolojiler")), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["NavItem"], null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["NavLink"], {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["NavLink"], null, "Teknolojiler"))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["NavItem"], null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_8___default.a, {
         href: "/articles"
-      }, "Yaz\u0131lar"))))));
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["NavLink"], null, "Yaz\u0131lar")))))));
     }
   }]);
 
@@ -197,12 +201,12 @@ __webpack_require__.r(__webpack_exports__);
 
 var MakaleCard = function MakaleCard(props) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], {
-    className: "mt-5"
+    className: "mt-5 shadow-sm"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["CardTitle"], {
     className: "lead article-title text-center"
   }, react_render_html__WEBPACK_IMPORTED_MODULE_2___default()(props.articleTitle)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container text-center"
-  }, react_render_html__WEBPACK_IMPORTED_MODULE_2___default()(props.articleTitle)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["CardFooter"], null, "Yay\u0131n Tarihi: ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_moment__WEBPACK_IMPORTED_MODULE_3___default.a, {
+  }, react_render_html__WEBPACK_IMPORTED_MODULE_2___default()(props.articleMessage)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["CardFooter"], null, "Yay\u0131n Tarihi: ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_moment__WEBPACK_IMPORTED_MODULE_3___default.a, {
     locale: "tr",
     fromNow: true,
     ago: true,
@@ -54032,7 +54036,7 @@ util.inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inh
 /*</replacement>*/
 
 /*<replacement>*/
-var debugUtil = __webpack_require__(/*! util */ 4);
+var debugUtil = __webpack_require__(/*! util */ 3);
 var debug = void 0;
 if (debugUtil && debugUtil.debuglog) {
   debug = debugUtil.debuglog('stream');
@@ -55921,7 +55925,7 @@ Writable.prototype._destroy = function (err, cb) {
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Buffer = __webpack_require__(/*! safe-buffer */ "./node_modules/safe-buffer/index.js").Buffer;
-var util = __webpack_require__(/*! util */ 5);
+var util = __webpack_require__(/*! util */ 4);
 
 function copyBuffer(src, target, offset) {
   src.copy(target, offset);
@@ -59216,10 +59220,10 @@ function (_React$Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_7___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(next_head__WEBPACK_IMPORTED_MODULE_8___default.a, null, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("title", null, "Berk Elmas | Makaleler"), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("link", {
         rel: "stylesheet",
-        href: "static/css/reactstrap.min.css"
+        href: "/static/css/reactstrap.min.css"
       }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("link", {
         rel: "stylesheet",
-        href: "static/css/style.css"
+        href: "/static/css/style.css"
       })), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_components_NavbarUst__WEBPACK_IMPORTED_MODULE_10__["default"], null), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_components_ArticleCards__WEBPACK_IMPORTED_MODULE_11__["default"], {
         data: this.props.data,
         pageCount: this.props.pageCount
@@ -59238,7 +59242,7 @@ function (_React$Component) {
               case 0:
                 query = _ref.query;
                 _context.next = 3;
-                return isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_9___default()('http://localhost:3001/articles?perPage=2&page=' + query.page);
+                return isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_9___default()('http://localhost:3001/articles?perPage=3&page=' + query.page);
 
               case 3:
                 res = _context.sent;
@@ -59277,7 +59281,7 @@ function (_React$Component) {
 
 /***/ }),
 
-/***/ 3:
+/***/ 2:
 /*!*********************************************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Farticles&absolutePagePath=C%3A%5CUsers%5CITopya%5CDesktop%5CNext%20Js%20%C3%96%C4%9Fren%5CnextJsServerRender%5Cpages%5Carticles.js ***!
   \*********************************************************************************************************************************************************************************/
@@ -59289,7 +59293,7 @@ module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Farticl
 
 /***/ }),
 
-/***/ 4:
+/***/ 3:
 /*!**********************!*\
   !*** util (ignored) ***!
   \**********************/
@@ -59300,7 +59304,7 @@ module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Farticl
 
 /***/ }),
 
-/***/ 5:
+/***/ 4:
 /*!**********************!*\
   !*** util (ignored) ***!
   \**********************/
@@ -59322,5 +59326,5 @@ module.exports = dll_6184ce4b2e7d7d52f429;
 
 /***/ })
 
-},[[3,"static/runtime/webpack.js"]]]);
+},[[2,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=articles.js.map
