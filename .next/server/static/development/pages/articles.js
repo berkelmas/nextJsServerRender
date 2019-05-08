@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -177,9 +177,10 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "input-group-append"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_7___default.a, {
-        href: '/articles?&title=' + this.state.search
+        href: "/articles?title=".concat(this.state.search, "&page=1"),
+        as: "/arama/".concat(this.state.search, "/1")
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("a", {
-        className: "btn btn-outline-info",
+        className: "btn btn-info",
         type: "button"
       }, "Ara")))), this.props.data.map(function (makale, index) {
         return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_micros_MakaleCard__WEBPACK_IMPORTED_MODULE_9__["default"], {
@@ -188,15 +189,15 @@ function (_React$Component) {
           articleMessage: makale.message,
           articleDate: makale.publisheddate
         });
-      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Pagination"], {
-        className: "d-flex justify-content-center mt-4"
+      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("ul", {
+        class: "pagination"
       }, Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(Array(this.props.pageCount)).map(function (e, i) {
-        return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["PaginationItem"], {
-          key: i
-        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_7___default.a, {
-          href: _this2.props.titleQuery ? "?page=".concat(i + 1, "&title=").concat(_this2.props.titleQuery) : "?page=".concat(i + 1),
-          as: _this2.props.titleQuery ? "?page=".concat(i + 1, "&title=").concat(_this2.props.titleQuery) : "/sayfa/".concat(i + 1)
-        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["PaginationLink"], null, i + 1)));
+        return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_7___default.a, {
+          href: _this2.props.titleQuery ? "/articles?page=".concat(i + 1, "&title=").concat(_this2.props.titleQuery) : "/articles?page=".concat(i + 1),
+          as: _this2.props.titleQuery ? "/arama/".concat(_this2.props.titleQuery, "/").concat(i + 1) : "/sayfa/".concat(i + 1)
+        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("a", {
+          class: "page-link"
+        }, i + 1));
       }))));
     }
   }]);
@@ -1415,7 +1416,7 @@ function (_React$Component) {
 
 /***/ }),
 
-/***/ 5:
+/***/ 3:
 /*!*********************************!*\
   !*** multi ./pages/articles.js ***!
   \*********************************/

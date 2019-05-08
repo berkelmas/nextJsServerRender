@@ -25,22 +25,19 @@ class ArticleCards extends React.Component {
           <div className="input-group mb-3 mt-4">
             <input onChange={e => this.setState({search : e.target.value})} type="text" className="form-control" placeholder="Makale Ara" />
             <div className="input-group-append">
-              <Link href={'/articles?&title=' + this.state.search}><a className="btn btn-outline-info" type="button">Ara</a></Link>
+              <Link href={`/articles?title=${this.state.search}&page=1`} as={`/arama/${this.state.search}/1`}><a className="btn btn-info" type="button">Ara</a></Link>
             </div>
           </div>
 
             {this.props.data.map((makale, index) => <MakaleCard key={index} articleTitle={makale.title} articleMessage={makale.message} articleDate={makale.publisheddate} />)}
-            <Pagination className="d-flex justify-content-center mt-4">
+
+
+            <ul class="pagination">
               {[...Array(this.props.pageCount)].map((e, i) =>
-                <PaginationItem key={i}>
-                  <Link href={this.props.titleQuery ? `?page=${i+1}&title=${this.props.titleQuery}` : `?page=${i+1}`} as={this.props.titleQuery ? `?page=${i+1}&title=${this.props.titleQuery}` : `/sayfa/${i+1}`}>
-                    <PaginationLink>
-                      {i+1}
-                    </PaginationLink>
-                  </Link>
-                </PaginationItem>
+                <Link href={this.props.titleQuery ? `/articles?page=${i+1}&title=${this.props.titleQuery}` : `/articles?page=${i+1}`} as={this.props.titleQuery ? `/arama/${this.props.titleQuery}/${i+1}` : `/sayfa/${i+1}`} ><a class="page-link">{i+1}</a></Link>
               )}
-            </Pagination>
+            </ul>
+
         </Col>
       </Row>
     )

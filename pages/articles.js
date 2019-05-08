@@ -17,7 +17,6 @@ class Articles extends React.Component {
     return {data: articles.reverse(), pageCount, titleQuery}
   }
 
-
   render() {
     return (
     <React.Fragment>

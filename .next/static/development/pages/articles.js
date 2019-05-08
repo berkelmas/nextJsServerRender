@@ -83,9 +83,10 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "input-group-append"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_7___default.a, {
-        href: '/articles?&title=' + this.state.search
+        href: "/articles?title=".concat(this.state.search, "&page=1"),
+        as: "/arama/".concat(this.state.search, "/1")
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("a", {
-        className: "btn btn-outline-info",
+        className: "btn btn-info",
         type: "button"
       }, "Ara")))), this.props.data.map(function (makale, index) {
         return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_micros_MakaleCard__WEBPACK_IMPORTED_MODULE_9__["default"], {
@@ -94,15 +95,15 @@ function (_React$Component) {
           articleMessage: makale.message,
           articleDate: makale.publisheddate
         });
-      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Pagination"], {
-        className: "d-flex justify-content-center mt-4"
+      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("ul", {
+        class: "pagination"
       }, Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(Array(this.props.pageCount)).map(function (e, i) {
-        return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["PaginationItem"], {
-          key: i
-        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_7___default.a, {
-          href: _this2.props.titleQuery ? "?page=".concat(i + 1, "&title=").concat(_this2.props.titleQuery) : "?page=".concat(i + 1),
-          as: _this2.props.titleQuery ? "?page=".concat(i + 1, "&title=").concat(_this2.props.titleQuery) : "/sayfa/".concat(i + 1)
-        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["PaginationLink"], null, i + 1)));
+        return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_7___default.a, {
+          href: _this2.props.titleQuery ? "/articles?page=".concat(i + 1, "&title=").concat(_this2.props.titleQuery) : "/articles?page=".concat(i + 1),
+          as: _this2.props.titleQuery ? "/arama/".concat(_this2.props.titleQuery, "/").concat(i + 1) : "/sayfa/".concat(i + 1)
+        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("a", {
+          class: "page-link"
+        }, i + 1));
       }))));
     }
   }]);
@@ -54062,7 +54063,7 @@ util.inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inh
 /*</replacement>*/
 
 /*<replacement>*/
-var debugUtil = __webpack_require__(/*! util */ 3);
+var debugUtil = __webpack_require__(/*! util */ 1);
 var debug = void 0;
 if (debugUtil && debugUtil.debuglog) {
   debug = debugUtil.debuglog('stream');
@@ -55951,7 +55952,7 @@ Writable.prototype._destroy = function (err, cb) {
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Buffer = __webpack_require__(/*! safe-buffer */ "./node_modules/safe-buffer/index.js").Buffer;
-var util = __webpack_require__(/*! util */ 4);
+var util = __webpack_require__(/*! util */ 2);
 
 function copyBuffer(src, target, offset) {
   src.copy(target, offset);
@@ -59310,7 +59311,7 @@ function (_React$Component) {
 
 /***/ }),
 
-/***/ 2:
+/***/ 0:
 /*!*********************************************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Farticles&absolutePagePath=C%3A%5CUsers%5CITopya%5CDesktop%5CNext%20Js%20%C3%96%C4%9Fren%5CnextJsServerRender%5Cpages%5Carticles.js ***!
   \*********************************************************************************************************************************************************************************/
@@ -59322,7 +59323,7 @@ module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Farticl
 
 /***/ }),
 
-/***/ 3:
+/***/ 1:
 /*!**********************!*\
   !*** util (ignored) ***!
   \**********************/
@@ -59333,7 +59334,7 @@ module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Farticl
 
 /***/ }),
 
-/***/ 4:
+/***/ 2:
 /*!**********************!*\
   !*** util (ignored) ***!
   \**********************/
@@ -59355,5 +59356,5 @@ module.exports = dll_6184ce4b2e7d7d52f429;
 
 /***/ })
 
-},[[2,"static/runtime/webpack.js"]]]);
+},[[0,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=articles.js.map
