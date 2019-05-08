@@ -27,6 +27,11 @@ app.prepare()
       app.render(req, res, actualPage, queryParams)
   })
 
+  server.get('/arama/:title/:page', (req, res) => {
+      const actualPage = '/articles'
+      const queryParams = { title: req.params.title, page: req.params.page }
+      app.render(req, res, actualPage, mergedQuery)
+  })
 
   server.get('*', (req, res) => {
     return handle(req, res)

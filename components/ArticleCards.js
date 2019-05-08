@@ -6,7 +6,13 @@ import {Col, Row, Card, CardTitle, CardText,
 import MakaleCard from './micros/MakaleCard';
 
 class ArticleCards extends React.Component {
+  constructor(props){
+    super(props);
 
+    this.state = {
+      search: ''
+    }
+  }
 
   render() {
     return (
@@ -15,11 +21,19 @@ class ArticleCards extends React.Component {
           <Card className="mt-5">
             <CardFooter className="shadow display-4 text-center">Makaleler</CardFooter>
           </Card>
+
+          <div className="input-group mb-3 mt-4">
+            <input onChange={e => this.setState({search : e.target.value})} type="text" className="form-control" placeholder="Makale Ara" />
+            <div className="input-group-append">
+              <Link href={'/articles?&title=' + this.state.search}><a className="btn btn-outline-info" type="button">Ara</a></Link>
+            </div>
+          </div>
+
             {this.props.data.map((makale, index) => <MakaleCard key={index} articleTitle={makale.title} articleMessage={makale.message} articleDate={makale.publisheddate} />)}
             <Pagination className="d-flex justify-content-center mt-4">
               {[...Array(this.props.pageCount)].map((e, i) =>
                 <PaginationItem key={i}>
-                  <Link href={'?perPage=3&page=' + (i+1)} as={'/sayfa/' + (i+1)}>
+                  <Link href={this.props.titleQuery ? `?page=${i+1}&title=${this.props.titleQuery}` : `?page=${i+1}`} as={this.props.titleQuery ? `?page=${i+1}&title=${this.props.titleQuery}` : `/sayfa/${i+1}`}>
                     <PaginationLink>
                       {i+1}
                     </PaginationLink>

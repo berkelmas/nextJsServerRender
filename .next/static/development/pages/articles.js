@@ -37,15 +37,23 @@ var ArticleCards =
 function (_React$Component) {
   Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__["default"])(ArticleCards, _React$Component);
 
-  function ArticleCards() {
+  function ArticleCards(props) {
+    var _this;
+
     Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__["default"])(this, ArticleCards);
 
-    return Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__["default"])(ArticleCards).apply(this, arguments));
+    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__["default"])(ArticleCards).call(this, props));
+    _this.state = {
+      search: ''
+    };
+    return _this;
   }
 
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(ArticleCards, [{
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Row"], {
         className: "mt-5"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
@@ -61,7 +69,25 @@ function (_React$Component) {
         className: "mt-5"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardFooter"], {
         className: "shadow display-4 text-center"
-      }, "Makaleler")), this.props.data.map(function (makale, index) {
+      }, "Makaleler")), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "input-group mb-3 mt-4"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("input", {
+        onChange: function onChange(e) {
+          return _this2.setState({
+            search: e.target.value
+          });
+        },
+        type: "text",
+        className: "form-control",
+        placeholder: "Makale Ara"
+      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "input-group-append"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_7___default.a, {
+        href: '/articles?&title=' + this.state.search
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("a", {
+        className: "btn btn-outline-info",
+        type: "button"
+      }, "Ara")))), this.props.data.map(function (makale, index) {
         return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_micros_MakaleCard__WEBPACK_IMPORTED_MODULE_9__["default"], {
           key: index,
           articleTitle: makale.title,
@@ -74,8 +100,8 @@ function (_React$Component) {
         return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["PaginationItem"], {
           key: i
         }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_7___default.a, {
-          href: '?perPage=3&page=' + (i + 1),
-          as: '/sayfa/' + (i + 1)
+          href: _this2.props.titleQuery ? "?page=".concat(i + 1, "&title=").concat(_this2.props.titleQuery) : "?page=".concat(i + 1),
+          as: _this2.props.titleQuery ? "?page=".concat(i + 1, "&title=").concat(_this2.props.titleQuery) : "/sayfa/".concat(i + 1)
         }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["PaginationLink"], null, i + 1)));
       }))));
     }
@@ -54036,7 +54062,7 @@ util.inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inh
 /*</replacement>*/
 
 /*<replacement>*/
-var debugUtil = __webpack_require__(/*! util */ 1);
+var debugUtil = __webpack_require__(/*! util */ 3);
 var debug = void 0;
 if (debugUtil && debugUtil.debuglog) {
   debug = debugUtil.debuglog('stream');
@@ -55925,7 +55951,7 @@ Writable.prototype._destroy = function (err, cb) {
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Buffer = __webpack_require__(/*! safe-buffer */ "./node_modules/safe-buffer/index.js").Buffer;
-var util = __webpack_require__(/*! util */ 2);
+var util = __webpack_require__(/*! util */ 4);
 
 function copyBuffer(src, target, offset) {
   src.copy(target, offset);
@@ -59225,6 +59251,7 @@ function (_React$Component) {
         rel: "stylesheet",
         href: "/static/css/style.css"
       })), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_components_NavbarUst__WEBPACK_IMPORTED_MODULE_10__["default"], null), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_components_ArticleCards__WEBPACK_IMPORTED_MODULE_11__["default"], {
+        titleQuery: this.props.titleQuery,
         data: this.props.data,
         pageCount: this.props.pageCount
       }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("hr", null));
@@ -59235,14 +59262,14 @@ function (_React$Component) {
       var _getInitialProps = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__["default"])(
       /*#__PURE__*/
       _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(_ref) {
-        var query, res, data, articles, pageCount;
+        var query, res, data, articles, pageCount, titleQuery;
         return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 query = _ref.query;
                 _context.next = 3;
-                return isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_9___default()('http://localhost:3001/articles?perPage=3&page=' + query.page);
+                return isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_9___default()(query.title ? "http://localhost:3001/articles?perPage=3&page=".concat(query.page, "&title=").concat(query.title) : "http://localhost:3001/articles?perPage=3&page=".concat(query.page));
 
               case 3:
                 res = _context.sent;
@@ -59253,12 +59280,14 @@ function (_React$Component) {
                 data = _context.sent;
                 articles = data['docs'];
                 pageCount = data['pages'];
+                titleQuery = query.title;
                 return _context.abrupt("return", {
                   data: articles.reverse(),
-                  pageCount: pageCount
+                  pageCount: pageCount,
+                  titleQuery: titleQuery
                 });
 
-              case 10:
+              case 11:
               case "end":
                 return _context.stop();
             }
@@ -59281,7 +59310,7 @@ function (_React$Component) {
 
 /***/ }),
 
-/***/ 0:
+/***/ 2:
 /*!*********************************************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Farticles&absolutePagePath=C%3A%5CUsers%5CITopya%5CDesktop%5CNext%20Js%20%C3%96%C4%9Fren%5CnextJsServerRender%5Cpages%5Carticles.js ***!
   \*********************************************************************************************************************************************************************************/
@@ -59293,7 +59322,7 @@ module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Farticl
 
 /***/ }),
 
-/***/ 1:
+/***/ 3:
 /*!**********************!*\
   !*** util (ignored) ***!
   \**********************/
@@ -59304,7 +59333,7 @@ module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Farticl
 
 /***/ }),
 
-/***/ 2:
+/***/ 4:
 /*!**********************!*\
   !*** util (ignored) ***!
   \**********************/
@@ -59326,5 +59355,5 @@ module.exports = dll_6184ce4b2e7d7d52f429;
 
 /***/ })
 
-},[[0,"static/runtime/webpack.js"]]]);
+},[[2,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=articles.js.map

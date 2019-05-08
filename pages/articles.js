@@ -9,11 +9,12 @@ import ArticleCards from '../components/ArticleCards';
 class Articles extends React.Component {
 
   static async getInitialProps({query}){
-    const res = await fetch('http://localhost:3001/articles?perPage=3&page=' + query.page )
+    const res = await fetch(query.title ? `http://localhost:3001/articles?perPage=3&page=${query.page}&title=${query.title}` : `http://localhost:3001/articles?perPage=3&page=${query.page}`)
     let data = await res.json();
     const articles = data['docs'];
     const pageCount = data['pages'];
-    return {data: articles.reverse(), pageCount}
+    const titleQuery = query.title
+    return {data: articles.reverse(), pageCount, titleQuery}
   }
 
 
@@ -26,7 +27,7 @@ class Articles extends React.Component {
           <link rel="stylesheet" href="/static/css/style.css" />
       </Head>
       <NavbarUst/>
-      <ArticleCards data={this.props.data} pageCount={this.props.pageCount} />
+      <ArticleCards titleQuery={this.props.titleQuery} data={this.props.data} pageCount={this.props.pageCount} />
       <br/>
       <hr/>
     </React.Fragment>

@@ -57045,7 +57045,7 @@ function (_React$Component) {
 
 /***/ }),
 
-/***/ 5:
+/***/ 1:
 /*!**********************************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F&absolutePagePath=C%3A%5CUsers%5CITopya%5CDesktop%5CNext%20Js%20%C3%96%C4%9Fren%5CnextJsServerRender%5Cpages%5Cindex.js ***!
   \**********************************************************************************************************************************************************************/
@@ -57068,5 +57068,5 @@ module.exports = dll_6184ce4b2e7d7d52f429;
 
 /***/ })
 
-},[[5,"static/runtime/webpack.js"]]]);
+},[[1,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=index.js.map
