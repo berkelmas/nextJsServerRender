@@ -54036,7 +54036,7 @@ util.inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inh
 /*</replacement>*/
 
 /*<replacement>*/
-var debugUtil = __webpack_require__(/*! util */ 3);
+var debugUtil = __webpack_require__(/*! util */ 1);
 var debug = void 0;
 if (debugUtil && debugUtil.debuglog) {
   debug = debugUtil.debuglog('stream');
@@ -55925,7 +55925,7 @@ Writable.prototype._destroy = function (err, cb) {
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Buffer = __webpack_require__(/*! safe-buffer */ "./node_modules/safe-buffer/index.js").Buffer;
-var util = __webpack_require__(/*! util */ 4);
+var util = __webpack_require__(/*! util */ 2);
 
 function copyBuffer(src, target, offset) {
   src.copy(target, offset);
@@ -59281,7 +59281,7 @@ function (_React$Component) {
 
 /***/ }),
 
-/***/ 2:
+/***/ 0:
 /*!*********************************************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Farticles&absolutePagePath=C%3A%5CUsers%5CITopya%5CDesktop%5CNext%20Js%20%C3%96%C4%9Fren%5CnextJsServerRender%5Cpages%5Carticles.js ***!
   \*********************************************************************************************************************************************************************************/
@@ -59293,7 +59293,7 @@ module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Farticl
 
 /***/ }),
 
-/***/ 3:
+/***/ 1:
 /*!**********************!*\
   !*** util (ignored) ***!
   \**********************/
@@ -59304,7 +59304,7 @@ module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Farticl
 
 /***/ }),
 
-/***/ 4:
+/***/ 2:
 /*!**********************!*\
   !*** util (ignored) ***!
   \**********************/
@@ -59326,5 +59326,5 @@ module.exports = dll_6184ce4b2e7d7d52f429;
 
 /***/ })
 
-},[[2,"static/runtime/webpack.js"]]]);
+},[[0,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=articles.js.map

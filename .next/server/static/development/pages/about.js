@@ -3,6 +3,12 @@ module.exports =
 /******/ 	// The module cache
 /******/ 	var installedModules = require('../../../ssr-module-cache.js');
 /******/
+/******/ 	// object to store loaded chunks
+/******/ 	// "0" means "already loaded"
+/******/ 	var installedChunks = {
+/******/ 		"static\\development\\pages\\about.js": 0
+/******/ 	};
+/******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
 /******/
@@ -33,6 +39,26 @@ module.exports =
 /******/ 		return module.exports;
 /******/ 	}
 /******/
+/******/ 	// This file contains only the entry chunk.
+/******/ 	// The chunk loading function for additional chunks
+/******/ 	__webpack_require__.e = function requireEnsure(chunkId) {
+/******/ 		var promises = [];
+/******/
+/******/
+/******/ 		// require() chunk loading for javascript
+/******/
+/******/ 		// "0" is the signal for "already loaded"
+/******/ 		if(installedChunks[chunkId] !== 0) {
+/******/ 			var chunk = require("../../../" + ({}[chunkId]||chunkId) + ".js");
+/******/ 			var moreModules = chunk.modules, chunkIds = chunk.ids;
+/******/ 			for(var moduleId in moreModules) {
+/******/ 				modules[moduleId] = moreModules[moduleId];
+/******/ 			}
+/******/ 			for(var i = 0; i < chunkIds.length; i++)
+/******/ 				installedChunks[chunkIds[i]] = 0;
+/******/ 		}
+/******/ 		return Promise.all(promises);
+/******/ 	};
 /******/
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
@@ -86,272 +112,24 @@ module.exports =
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
 /******/
+/******/ 	// uncaught error handler for webpack runtime
+/******/ 	__webpack_require__.oe = function(err) {
+/******/ 		process.nextTick(function() {
+/******/ 			throw err; // catch this error by using import().catch()
+/******/ 		});
+/******/ 	};
+/******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./components/CardsUst.js":
-/*!********************************!*\
-  !*** ./components/CardsUst.js ***!
-  \********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/regenerator */ "./node_modules/@babel/runtime-corejs2/regenerator/index.js");
-/* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/asyncToGenerator */ "./node_modules/@babel/runtime-corejs2/helpers/esm/asyncToGenerator.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/assertThisInitialized */ "./node_modules/@babel/runtime-corejs2/helpers/esm/assertThisInitialized.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! reactstrap */ "reactstrap");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-icons/fa */ "react-icons/fa");
-/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(react_icons_fa__WEBPACK_IMPORTED_MODULE_11__);
-
-
-
-
-
-
-
-
-
-
-
-
-
-var CardsUst =
-/*#__PURE__*/
-function (_React$Component) {
-  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_7__["default"])(CardsUst, _React$Component);
-
-  function CardsUst(props) {
-    var _this;
-
-    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_2__["default"])(this, CardsUst);
-
-    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__["default"])(CardsUst).call(this, props));
-
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__["default"])(_this), "updateInput", function (e) {
-      _this.setState({
-        input: e.target.value
-      });
-    });
-
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__["default"])(_this), "sendMessage",
-    /*#__PURE__*/
-    function () {
-      var _ref = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__["default"])(
-      /*#__PURE__*/
-      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(e) {
-        var _ref2, firebase, refer, mesaj;
-
-        return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.next = 2;
-                return e.preventDefault();
-
-              case 2:
-                _context.next = 4;
-                return _this.props;
-
-              case 4:
-                _ref2 = _context.sent;
-                firebase = _ref2.firebase;
-                _context.next = 8;
-                return firebase.database().ref('messages');
-
-              case 8:
-                refer = _context.sent;
-                _context.prev = 9;
-                _context.next = 12;
-                return refer.push({
-                  message: _this.state.input,
-                  username: _this.state.name
-                });
-
-              case 12:
-                mesaj = _context.sent;
-
-                _this.setState({
-                  input: ''
-                });
-
-                _context.next = 20;
-                break;
-
-              case 16:
-                _context.prev = 16;
-                _context.t0 = _context["catch"](9);
-                console.log(_context.t0);
-
-                _this.setState({
-                  input: ''
-                });
-
-              case 20:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee, null, [[9, 16]]);
-      }));
-
-      return function (_x) {
-        return _ref.apply(this, arguments);
-      };
-    }());
-
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__["default"])(_this), "googleLogin", function () {
-      var firebase = _this.props.firebase;
-      var provider = new firebase.auth.GoogleAuthProvider();
-      provider.addScope('profile');
-      provider.addScope('email');
-      firebase.auth().signInWithPopup(provider).then(function (result) {
-        var token = result.credential.accessToken;
-        var email = result.user.email;
-        localStorage.setItem('googleToken', token);
-
-        _this.setState({
-          loginState: true,
-          name: result.user.displayName
-        });
-      }).catch(function (err) {
-        console.log(err);
-      });
-    });
-
-    _this.state = {
-      messages: [],
-      input: '',
-      loginState: false,
-      loading: true,
-      name: '',
-      authLoading: true
-    };
-    return _this;
-  }
-
-  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_3__["default"])(CardsUst, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var _this2 = this;
-
-      var firebase = this.props.firebase;
-      var messages = firebase.database().ref('messages/').limitToLast(10);
-      messages.on('child_added', function (snapshot) {
-        var veri = snapshot.val();
-
-        _this2.setState(function (state) {
-          var messages = state.messages.concat(veri);
-          return {
-            messages: messages,
-            input: '',
-            loading: false
-          };
-        });
-      });
-      var token = localStorage.getItem('googleToken');
-
-      if (token) {
-        var credential = firebase.auth.GoogleAuthProvider.credential(null, token);
-        firebase.auth().signInAndRetrieveDataWithCredential(credential).then(function (res) {
-          _this2.setState({
-            loginState: true,
-            name: res.user.displayName,
-            authLoading: false
-          });
-        }).catch(function (err) {
-          return _this2.setState({
-            authLoading: false
-          });
-        });
-      } else {
-        this.setState({
-          authLoading: false
-        });
-      }
-    } /// end of componentDidMount()
-
-  }, {
-    key: "render",
-    value: function render() {
-      var messageForm = react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Form"], {
-        onSubmit: this.sendMessage
-      }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroup"], {
-        className: "pb-3 pt-3"
-      }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Input"], {
-        className: "form-control",
-        onChange: this.updateInput,
-        value: this.state.input,
-        placeholder: this.state.name + " olarak yaziyorsun"
-      })), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Button"], {
-        type: "submit",
-        className: "w-100 bg-info"
-      }, "G\xF6nder"));
-      var googleButton = react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Button"], {
-        onClick: this.googleLogin,
-        className: "w-100 bg-danger"
-      }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_11__["FaGooglePlusG"], {
-        size: 23
-      }), " Google ile \xDCye Ol");
-      var chatMessages = react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", null, this.state.messages.map(function (val, index) {
-        return react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Card"], {
-          key: index,
-          className: "p-1 mb-2 mt-2 w-50"
-        }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["CardText"], null, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("strong", null, "@", val.username), " ", val.message));
-      }), this.state.authLoading ? react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Spinner"], {
-        className: "mx-auto",
-        style: {
-          width: '3rem',
-          height: '3rem'
-        },
-        type: "grow"
-      }) : this.state.loginState ? messageForm : googleButton);
-      return react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_9__["Fragment"], null, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Row"], {
-        className: "mx-auto d-flex justify-content-center pb-5"
-      }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Col"], {
-        sm: "8"
-      }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Card"], {
-        className: "shadow-lg",
-        body: true
-      }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["CardTitle"], {
-        className: "card-title text-center"
-      }, "Chat Odasi"), this.state.loading ? react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Spinner"], {
-        className: "mx-auto",
-        style: {
-          width: '3rem',
-          height: '3rem'
-        },
-        type: "grow"
-      }) : chatMessages))));
-    }
-  }]);
-
-  return CardsUst;
-}(react__WEBPACK_IMPORTED_MODULE_9___default.a.Component);
-
-/* harmony default export */ __webpack_exports__["default"] = (CardsUst);
-
-/***/ }),
-
-/***/ "./components/JumbotronUst.js":
-/*!************************************!*\
-  !*** ./components/JumbotronUst.js ***!
-  \************************************/
+/***/ "./components/AboutCards.js":
+/*!**********************************!*\
+  !*** ./components/AboutCards.js ***!
+  \**********************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -365,10 +143,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! reactstrap */ "reactstrap");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! reactstrap */ "reactstrap");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_7__);
 
 
 
@@ -378,66 +154,279 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-var JumbotronUst =
+var AboutCards =
 /*#__PURE__*/
 function (_React$Component) {
-  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__["default"])(JumbotronUst, _React$Component);
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__["default"])(AboutCards, _React$Component);
 
-  function JumbotronUst(props) {
+  function AboutCards(props) {
     var _this;
 
-    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, JumbotronUst);
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, AboutCards);
 
-    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__["default"])(JumbotronUst).call(this, props));
-    _this.toggle = _this.toggle.bind(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this));
+    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__["default"])(AboutCards).call(this, props));
     _this.state = {
-      collapse: false
+      modal: false
     };
+    _this.toggle = _this.toggle.bind(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this));
     return _this;
   }
 
-  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(JumbotronUst, [{
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(AboutCards, [{
     key: "toggle",
     value: function toggle() {
-      this.setState(function (state) {
+      this.setState(function (prevState) {
         return {
-          collapse: !state.collapse
+          modal: !prevState.modal
         };
       });
     }
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Jumbotron"], {
-        className: "mt-3"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h1", {
-        className: "display-3"
-      }, "Portfolyo"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", {
-        className: "lead"
-      }, "Berk Elmas'\u0131n g\xFCncel web teknolojilerini takip etmek ve kullanmak amac\u0131 ile geli\u015Ftirien Web Sitesidir."), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("hr", {
-        className: "my-2"
-      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", null, "Berk Elmas taraf\u0131ndan yeni teknolojilerin kullan\u0131lmas\u0131 ve ki\u015Fisel geli\u015Fim i\xE7in tasarlanan bu web sitesinde; hangi g\xFCncel teknolojilerin kullan\u0131ld\u0131\u011F\u0131n\u0131 g\xF6rebilirsiniz."), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", {
-        className: "lead"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Button"], {
-        className: "mt-3",
+      return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Row"], null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Col"], {
+        sm: "12",
+        md: {
+          size: 8,
+          offset: 2
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Card"], null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["CardHeader"], {
+        tag: "h3"
+      }, "Ben Kimim?"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["CardBody"], null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["CardTitle"], null, "Ne Yapiyorum?"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["CardText"], null, "Bos zamanlarimda kod yazmayi seviyorum; bu konuda yeni teknolojileri ogrenmeyi, bunlari uygulamayi ve ozellikle web teknolojilerinin gelisimine tanik olmaktan hoslaniyorum."), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["CardText"], null, "Egitim hayatinin pratik hayatimda bana herhangi bir katki saglamadigini cok fazla dile getiremesem de; maalesef formal egitimin gunumuz dunyasinda pek bir sey kattigini dusunmuyorum."), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Button"], {
         onClick: this.toggle,
-        color: "info"
-      }, "Bu Site Neden Var?")), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Collapse"], {
-        isOpen: this.state.collapse
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Card"], {
-        className: "card-background"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardBody"], null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", {
-        className: "lead"
-      }, "Portfolyo", react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("br", null), " Bu web sitesinde modern JavaScript kutuphanelerinden mumkun oldugu kadar faydalanarak hem kendi front end bilgimi gelistirmeye calistim ve yalin bir calisma oldugunu dusunuyorum. Kullanilan teknolojiler icin detayli bilgiye ", react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("strong", null, "buraya"), " tiklayarak ulasabilirsiniz."))))));
+        className: "btn button-gradient"
+      }, "Egitim Hayatim"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Modal"], {
+        isOpen: this.state.modal,
+        toggle: this.toggle,
+        className: this.props.className
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["ModalHeader"], {
+        toggle: this.toggle
+      }, "Egitim Gecmisim"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["ModalBody"], null, "Kabata\u015F Erkek Lisesi, ", react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("br", null), "Istanbul Universitesi Hukuk Fakultesi ", react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("br", null), "Detaylar icin: ", react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("a", {
+        target: "_blank",
+        href: "https://tr.linkedin.com/in/berk-elmas-861350110"
+      }, "Linkedin")), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["ModalFooter"], null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Button"], {
+        color: "primary",
+        onClick: this.toggle
+      }, "Kapat"), ' ')))))));
     }
   }]);
 
-  return JumbotronUst;
+  return AboutCards;
 }(react__WEBPACK_IMPORTED_MODULE_6___default.a.Component);
 
 ;
-/* harmony default export */ __webpack_exports__["default"] = (JumbotronUst);
+/* harmony default export */ __webpack_exports__["default"] = (AboutCards);
+
+/***/ }),
+
+/***/ "./components/CKeditor.js":
+/*!********************************!*\
+  !*** ./components/CKeditor.js ***!
+  \********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/json/stringify */ "./node_modules/@babel/runtime-corejs2/core-js/json/stringify.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/assertThisInitialized */ "./node_modules/@babel/runtime-corejs2/helpers/esm/assertThisInitialized.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! reactstrap */ "reactstrap");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! isomorphic-unfetch */ "isomorphic-unfetch");
+/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! next/dynamic */ "next/dynamic");
+/* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(next_dynamic__WEBPACK_IMPORTED_MODULE_11__);
+
+
+
+
+
+
+
+
+
+
+
+
+
+var CKEditor = next_dynamic__WEBPACK_IMPORTED_MODULE_11___default()(function () {
+  return __webpack_require__.e(/*! import() */ 0).then(__webpack_require__.bind(null, /*! ./CkeditorComp */ "./components/CkeditorComp.js"));
+}, {
+  ssr: false,
+  loadableGenerated: {
+    webpack: function webpack() {
+      return [/*require.resolve*/(/*! ./CkeditorComp */ "./components/CkeditorComp.js")];
+    },
+    modules: ['./CkeditorComp']
+  }
+});
+
+var CKeditor =
+/*#__PURE__*/
+function (_Component) {
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_6__["default"])(CKeditor, _Component);
+
+  function CKeditor(props) {
+    var _this;
+
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__["default"])(this, CKeditor);
+
+    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__["default"])(CKeditor).call(this, props));
+
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__["default"])(_this), "updateMakale", function (event, editor) {
+      var data = editor.getData();
+
+      _this.setState({
+        article: data
+      });
+    });
+
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__["default"])(_this), "saveArticle", function (e) {
+      isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_10___default()('http://localhost:3001/addarticle', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0___default()({
+          title: _this.state.articleTitle,
+          message: _this.state.article,
+          author: 'Berk Elmas'
+        })
+      }).then(function (res) {
+        _this.setState({
+          article: 'Makale',
+          articleTitle: '',
+          modal: true,
+          sentSuccess: true
+        });
+      }).catch(function (err) {
+        _this.setState({
+          article: 'Makale',
+          articleTitle: '',
+          modal: true,
+          sentSuccess: false
+        });
+      });
+      e.preventDefault;
+    });
+
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__["default"])(_this), "toggle", function () {
+      _this.setState(function (prevState) {
+        return {
+          modal: !prevState.modal
+        };
+      });
+    });
+
+    _this.state = {
+      article: 'Makale',
+      isAdmin: false,
+      articleTitle: '',
+      authLoading: true,
+      modal: false,
+      sentSuccess: false
+    };
+    return _this;
+  }
+
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(CKeditor, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      var firebase = this.props.firebase;
+      var token = localStorage.getItem('googleToken');
+
+      if (token) {
+        var credential = firebase.auth.GoogleAuthProvider.credential(null, token);
+        firebase.auth().signInAndRetrieveDataWithCredential(credential).then(function (res) {
+          if (res.user.displayName === 'Berk Elmas') {
+            _this2.setState({
+              isAdmin: true,
+              authLoading: false
+            });
+          }
+        }).catch(function (err) {
+          return _this2.setState({
+            authLoading: false
+          });
+        });
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Row"], {
+        className: "mt-5"
+      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Col"], {
+        sm: "12",
+        md: {
+          size: 8,
+          offset: 2
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("h2", {
+        className: "text-center"
+      }, "Makale Ekle"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Input"], {
+        onChange: function onChange(e) {
+          return _this3.setState({
+            articleTitle: e.target.value
+          });
+        },
+        value: this.state.articleTitle,
+        className: "p-3 mt-3 mb-3",
+        placeholder: "Makale Ba\u015Fl\u0131\u011F\u0131"
+      }), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(CKEditor, {
+        data: this.state.article,
+        onInit: function onInit(editor) {
+          // You can store the "editor" and use when it is needed.
+          console.log('Editor is ready to use!', editor);
+        },
+        onChange: function onChange(event, editor) {
+          _this3.updateMakale(event, editor);
+        }
+      }), this.state.authLoading ? react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+        className: "d-flex justify-content-center p-5"
+      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Spinner"], {
+        className: "mx-auto",
+        style: {
+          width: '3rem',
+          height: '3rem'
+        },
+        type: "grow"
+      })) : this.state.isAdmin ? react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("button", {
+        onClick: this.saveArticle,
+        className: "btn btn-info mt-3 mb-5 w-100"
+      }, "Makale Ekle") : react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("p", {
+        className: "text-center warning-p"
+      }, "Sadece Berk Elmas Makale Y\xFCkleyebilir"))), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Modal"], {
+        isOpen: this.state.modal,
+        toggle: this.toggle,
+        className: this.props.className
+      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["ModalHeader"], {
+        toggle: this.toggle
+      }, this.state.sentSuccess ? 'Makale Başarı ile Gönderildi' : 'Makale Gönderimi Başarısız'), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["ModalBody"], null, this.state.sentSuccess ? 'Makaleniz başarı ile backend servera kaydedildi.' : 'Makalenizin veritabanına kaydı başarısız oldu.'), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["ModalFooter"], null, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Button"], {
+        color: "primary",
+        onClick: this.toggle
+      }, "Tamam"), ' ')));
+    }
+  }]);
+
+  return CKeditor;
+}(react__WEBPACK_IMPORTED_MODULE_8__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (CKeditor);
 
 /***/ }),
 
@@ -587,17 +576,6 @@ module.exports = __webpack_require__(/*! core-js/library/fn/object/set-prototype
 
 /***/ }),
 
-/***/ "./node_modules/@babel/runtime-corejs2/core-js/promise.js":
-/*!****************************************************************!*\
-  !*** ./node_modules/@babel/runtime-corejs2/core-js/promise.js ***!
-  \****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! core-js/library/fn/promise */ "core-js/library/fn/promise");
-
-/***/ }),
-
 /***/ "./node_modules/@babel/runtime-corejs2/core-js/symbol.js":
 /*!***************************************************************!*\
   !*** ./node_modules/@babel/runtime-corejs2/core-js/symbol.js ***!
@@ -702,58 +680,6 @@ function _assertThisInitialized(self) {
   }
 
   return self;
-}
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime-corejs2/helpers/esm/asyncToGenerator.js":
-/*!*****************************************************************************!*\
-  !*** ./node_modules/@babel/runtime-corejs2/helpers/esm/asyncToGenerator.js ***!
-  \*****************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _asyncToGenerator; });
-/* harmony import */ var _core_js_promise__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../core-js/promise */ "./node_modules/@babel/runtime-corejs2/core-js/promise.js");
-/* harmony import */ var _core_js_promise__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_core_js_promise__WEBPACK_IMPORTED_MODULE_0__);
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
-  try {
-    var info = gen[key](arg);
-    var value = info.value;
-  } catch (error) {
-    reject(error);
-    return;
-  }
-
-  if (info.done) {
-    resolve(value);
-  } else {
-    _core_js_promise__WEBPACK_IMPORTED_MODULE_0___default.a.resolve(value).then(_next, _throw);
-  }
-}
-
-function _asyncToGenerator(fn) {
-  return function () {
-    var self = this,
-        args = arguments;
-    return new _core_js_promise__WEBPACK_IMPORTED_MODULE_0___default.a(function (resolve, reject) {
-      var gen = fn.apply(self, args);
-
-      function _next(value) {
-        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
-      }
-
-      function _throw(err) {
-        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
-      }
-
-      _next(undefined);
-    });
-  };
 }
 
 /***/ }),
@@ -1124,18 +1050,6 @@ module.exports = _typeof;
 
 /***/ }),
 
-/***/ "./node_modules/@babel/runtime-corejs2/regenerator/index.js":
-/*!******************************************************************!*\
-  !*** ./node_modules/@babel/runtime-corejs2/regenerator/index.js ***!
-  \******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! regenerator-runtime */ "regenerator-runtime");
-
-
-/***/ }),
-
 /***/ "./node_modules/next/dist/client/link.js":
 /*!***********************************************!*\
   !*** ./node_modules/next/dist/client/link.js ***!
@@ -1401,9 +1315,9 @@ module.exports = __webpack_require__(/*! ./dist/client/link */ "./node_modules/n
 
 /***/ }),
 
-/***/ "./pages/index.js":
+/***/ "./pages/about.js":
 /*!************************!*\
-  !*** ./pages/index.js ***!
+  !*** ./pages/about.js ***!
   \************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -1417,17 +1331,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! firebase/app */ "firebase/app");
-/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(firebase_app__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var firebase_database__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! firebase/database */ "firebase/database");
-/* harmony import */ var firebase_database__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(firebase_database__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var firebase_auth__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! firebase/auth */ "firebase/auth");
-/* harmony import */ var firebase_auth__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(firebase_auth__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! next/head */ "next/head");
-/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _components_NavbarUst__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/NavbarUst */ "./components/NavbarUst.js");
-/* harmony import */ var _components_JumbotronUst__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/JumbotronUst */ "./components/JumbotronUst.js");
-/* harmony import */ var _components_CardsUst__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../components/CardsUst */ "./components/CardsUst.js");
+/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! next/head */ "next/head");
+/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _components_NavbarUst__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/NavbarUst */ "./components/NavbarUst.js");
+/* harmony import */ var _components_AboutCards__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/AboutCards */ "./components/AboutCards.js");
+/* harmony import */ var _components_CKeditor__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/CKeditor */ "./components/CKeditor.js");
+/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! firebase/app */ "firebase/app");
+/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(firebase_app__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var firebase_database__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! firebase/database */ "firebase/database");
+/* harmony import */ var firebase_database__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(firebase_database__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var firebase_auth__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! firebase/auth */ "firebase/auth");
+/* harmony import */ var firebase_auth__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(firebase_auth__WEBPACK_IMPORTED_MODULE_12__);
+
+
+
+
 
 
 
@@ -1439,22 +1357,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
-
-
-var Home =
+var About =
 /*#__PURE__*/
 function (_React$Component) {
-  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__["default"])(Home, _React$Component);
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__["default"])(About, _React$Component);
 
-  function Home() {
-    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, Home);
+  function About() {
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, About);
 
-    return Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__["default"])(Home).apply(this, arguments));
+    return Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__["default"])(About).apply(this, arguments));
   }
 
-  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(Home, [{
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(About, [{
     key: "componentWillMount",
     value: function componentWillMount() {
       // Your web app's Firebase configuration
@@ -1468,42 +1382,71 @@ function (_React$Component) {
         appId: "1:627494375899:web:ea280f5712603c51"
       }; // Initialize Firebase
 
-      if (!firebase_app__WEBPACK_IMPORTED_MODULE_6___default.a.apps.length) {
-        firebase_app__WEBPACK_IMPORTED_MODULE_6___default.a.initializeApp(firebaseConfig);
+      if (!firebase_app__WEBPACK_IMPORTED_MODULE_10___default.a.apps.length) {
+        firebase_app__WEBPACK_IMPORTED_MODULE_10___default.a.initializeApp(firebaseConfig);
         console.log("Firebase Baglantisi Basarili...");
       }
     }
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(next_head__WEBPACK_IMPORTED_MODULE_9___default.a, null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("title", null, "Berk Elmas"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("link", {
+      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(next_head__WEBPACK_IMPORTED_MODULE_6___default.a, null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("title", null, "Hakk\u0131mda"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("link", {
         rel: "stylesheet",
         href: "static/css/reactstrap.min.css"
       }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("link", {
         rel: "stylesheet",
+        href: "static/css/animate.css"
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("link", {
+        rel: "stylesheet",
         href: "static/css/style.css"
-      })), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_components_NavbarUst__WEBPACK_IMPORTED_MODULE_10__["default"], null), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_components_JumbotronUst__WEBPACK_IMPORTED_MODULE_11__["default"], null), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_components_CardsUst__WEBPACK_IMPORTED_MODULE_12__["default"], {
-        firebase: firebase_app__WEBPACK_IMPORTED_MODULE_6___default.a
+      })), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_components_NavbarUst__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        className: "d-block"
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "mt-5"
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_components_AboutCards__WEBPACK_IMPORTED_MODULE_8__["default"], null), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_components_CKeditor__WEBPACK_IMPORTED_MODULE_9__["default"], {
+        firebase: firebase_app__WEBPACK_IMPORTED_MODULE_10___default.a
       }));
     }
   }]);
 
-  return Home;
+  return About;
 }(react__WEBPACK_IMPORTED_MODULE_5___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (Home);
+/* harmony default export */ __webpack_exports__["default"] = (About);
 
 /***/ }),
 
-/***/ 6:
+/***/ 5:
 /*!******************************!*\
-  !*** multi ./pages/index.js ***!
+  !*** multi ./pages/about.js ***!
   \******************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\ITopya\Desktop\Next Js Öğren\nextJsServerRender\pages\index.js */"./pages/index.js");
+module.exports = __webpack_require__(/*! C:\Users\ITopya\Desktop\Next Js Öğren\nextJsServerRender\pages\about.js */"./pages/about.js");
 
+
+/***/ }),
+
+/***/ "@ckeditor/ckeditor5-build-classic":
+/*!****************************************************!*\
+  !*** external "@ckeditor/ckeditor5-build-classic" ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@ckeditor/ckeditor5-build-classic");
+
+/***/ }),
+
+/***/ "@ckeditor/ckeditor5-react":
+/*!********************************************!*\
+  !*** external "@ckeditor/ckeditor5-react" ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@ckeditor/ckeditor5-react");
 
 /***/ }),
 
@@ -1515,6 +1458,17 @@ module.exports = __webpack_require__(/*! C:\Users\ITopya\Desktop\Next Js Öğren
 /***/ (function(module, exports) {
 
 module.exports = require("core-js/library/fn/json/stringify");
+
+/***/ }),
+
+/***/ "core-js/library/fn/object/assign":
+/*!***************************************************!*\
+  !*** external "core-js/library/fn/object/assign" ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("core-js/library/fn/object/assign");
 
 /***/ }),
 
@@ -1559,17 +1513,6 @@ module.exports = require("core-js/library/fn/object/get-prototype-of");
 /***/ (function(module, exports) {
 
 module.exports = require("core-js/library/fn/object/set-prototype-of");
-
-/***/ }),
-
-/***/ "core-js/library/fn/promise":
-/*!*********************************************!*\
-  !*** external "core-js/library/fn/promise" ***!
-  \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("core-js/library/fn/promise");
 
 /***/ }),
 
@@ -1628,6 +1571,17 @@ module.exports = require("firebase/database");
 
 /***/ }),
 
+/***/ "isomorphic-unfetch":
+/*!*************************************!*\
+  !*** external "isomorphic-unfetch" ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("isomorphic-unfetch");
+
+/***/ }),
+
 /***/ "next-server/dist/lib/utils":
 /*!*********************************************!*\
   !*** external "next-server/dist/lib/utils" ***!
@@ -1636,6 +1590,17 @@ module.exports = require("firebase/database");
 /***/ (function(module, exports) {
 
 module.exports = require("next-server/dist/lib/utils");
+
+/***/ }),
+
+/***/ "next/dynamic":
+/*!*******************************!*\
+  !*** external "next/dynamic" ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("next/dynamic");
 
 /***/ }),
 
@@ -1694,17 +1659,6 @@ module.exports = require("react");
 
 /***/ }),
 
-/***/ "react-icons/fa":
-/*!*********************************!*\
-  !*** external "react-icons/fa" ***!
-  \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("react-icons/fa");
-
-/***/ }),
-
 /***/ "reactstrap":
 /*!*****************************!*\
   !*** external "reactstrap" ***!
@@ -1713,17 +1667,6 @@ module.exports = require("react-icons/fa");
 /***/ (function(module, exports) {
 
 module.exports = require("reactstrap");
-
-/***/ }),
-
-/***/ "regenerator-runtime":
-/*!**************************************!*\
-  !*** external "regenerator-runtime" ***!
-  \**************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("regenerator-runtime");
 
 /***/ }),
 
@@ -1739,4 +1682,4 @@ module.exports = require("url");
 /***/ })
 
 /******/ });
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=about.js.map
